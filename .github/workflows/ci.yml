@@ -28,7 +28,7 @@ jobs:
         pip install wheel
         pip install -r requirements.txt 2>/dev/null || echo "No requirements.txt"
         pip install .
-        pip install pytest pytest-cov coverage ruff
+        pip install pytest pytest-cov coverage ruff rich
     
     - name: Lint with ruff
       run: |
