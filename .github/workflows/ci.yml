@@ -32,25 +32,42 @@ jobs:
     
     - name: Lint with ruff
       run: |
-        # Only check your test files and ignore existing issues
-        ruff check tests/ openunderstand/ --statistics --exit-zero
-        # Or check only your files
-        ruff check tests/
+        # Only check your test files - these should be clean
+        ruff check tests/ --output-format=github
     
     - name: Run tests with coverage
       run: |
         pytest -v --cov=openunderstand --cov-report=term --cov-report=xml --cov-report=html --cov-branch
     
-    - name: Check coverage threshold
+    - name: Check line coverage threshold
       run: |
-        echo "Checking coverage quality gates..."
+        echo "Checking line coverage..."
         coverage report --fail-under=80
-    
-    - name: Upload coverage reports
+
+    - name: Check branch coverage threshold
+      run: |
+        echo "Checking branch coverage..."
+        # Get branch coverage from coverage report
+        BRANCH_COVERAGE=$(coverage report | grep TOTAL | awk '{print $6}' | sed 's/%//')
+        echo "Branch coverage: ${BRANCH_COVERAGE}%"
+        if [ -n "$BRANCH_COVERAGE" ] && [ "$BRANCH_COVERAGE" -lt 70 ]; then
+          echo "Branch coverage ${BRANCH_COVERAGE}% is below 70%!"
+          exit 1
+        else
+          echo "Branch coverage meets 70% threshold!"
+        fi
+
+    - name: Upload coverage HTML
       uses: actions/upload-artifact@v4
       with:
-        name: coverage-reports
+        name: coverage-html
         path: coverage_html/
+    
+    - name: Upload coverage XML
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage-xml
+        path: coverage.xml
     
     - name: Upload test results
       uses: actions/upload-artifact@v4
