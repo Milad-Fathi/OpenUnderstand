@@ -37,8 +37,7 @@ jobs:
     
     - name: Run tests with coverage
       run: |
-        pytest -v --cov=openunderstand --cov-report=term --cov-report=xml --cov-report=html --cov-branch
-        tests/ test_analysis/
+        pytest -v --cov=openunderstand --cov-report=term --cov-report=xml --cov-report=html --cov-branch tests/ test_analysis/
     
     - name: Check line coverage threshold
       run: |
