@@ -26,7 +26,6 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install wheel
-        # Install from requirements.txt if it exists
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
         pip install .
         pip install pytest pytest-cov coverage ruff
@@ -37,8 +36,7 @@ jobs:
     
     - name: Run tests with coverage
       run: |
-        # Run your tests and skip problematic files
-        pytest -v --cov=openunderstand --cov-report=term --cov-report=xml --cov-report=html --cov-branch tests/ test_openunderstand.py test_run.py --ignore=Tests_G9.py
+        pytest -v --cov=openunderstand --cov-report=term --cov-report=xml --cov-report=html --cov-branch tests/
     
     - name: Check line coverage threshold
       run: |
@@ -51,10 +49,10 @@ jobs:
         BRANCH_COVERAGE=$(coverage report | grep TOTAL | awk '{print $6}' | sed 's/%//')
         echo "Branch coverage: ${BRANCH_COVERAGE}%"
         if [ -n "$BRANCH_COVERAGE" ] && [ "$BRANCH_COVERAGE" -lt 70 ]; then
-          echo "❌ Branch coverage ${BRANCH_COVERAGE}% is below 70%!"
+          echo "Branch coverage ${BRANCH_COVERAGE}% is below 70%!"
           exit 1
         else
-          echo "✅ Branch coverage meets 70% threshold!"
+          echo "Branch coverage meets 70% threshold!"
         fi
 
     - name: Upload coverage HTML
