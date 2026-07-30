@@ -13,7 +13,7 @@ project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
 from openunderstand.oudb import api
-from openunderstand.oudb.models import KindModel, EntityModel
+from openunderstand.oudb.models import KindModel
 
 
 @pytest.fixture
@@ -46,11 +46,13 @@ def temp_db():
         try:
             os.unlink(db_path)
         except PermissionError:
+            # File might still be locked, wait and retry
             time.sleep(0.5)
             try:
                 if os.path.exists(db_path):
                     os.unlink(db_path)
             except PermissionError:
+                # Give up on cleanup - file will be deleted by OS eventually
                 pass
 
 
@@ -72,21 +74,3 @@ def method_kind():
     """Get or create Method kind."""
     kind, _ = KindModel.get_or_create(_name="Method", is_ent_kind=True)
     return kind
-
-
-@pytest.fixture
-def temp_java_file():
-    """Create a temporary Java file for testing."""
-    def _create_file(content):
-        with tempfile.NamedTemporaryFile(suffix='.java', delete=False, mode='w', encoding='utf-8') as f:
-            f.write(content)
-            return f.name
-    return _create_file
-
-
-@pytest.fixture
-def project(temp_db):
-    """Create a Project instance."""
-    from openunderstand.ounderstand.project import Project
-    db = api.open(temp_db)
-    return Project(db)

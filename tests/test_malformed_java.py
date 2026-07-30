@@ -32,8 +32,10 @@ def temp_db():
     if hasattr(db, 'close'):
         try:
             db.close()
-        except:
+        except AttributeError:
             pass
+        except OSError as e:
+            print(f"Warning: Could not close database: {e}")
 
     if os.path.exists(db_path):
         try:
@@ -43,14 +45,14 @@ def temp_db():
 
 
 @pytest.fixture
-def class_kind(temp_db):
+def class_kind():
     """Get Class kind."""
     kind, _ = KindModel.get_or_create(_name="Class", is_ent_kind=True)
     return kind
 
 
 @pytest.fixture
-def method_kind(temp_db):
+def method_kind():
     """Get Method kind."""
     kind, _ = KindModel.get_or_create(_name="Method", is_ent_kind=True)
     return kind
@@ -58,61 +60,51 @@ def method_kind(temp_db):
 
 def test_malformed_class_missing_brace(temp_db, class_kind):
     """Test handling of malformed class (simulated)."""
-    # This simulates a malformed class - missing closing brace
     malformed_class = EntityModel.create(
         _name="MalformedClass",
         _kind=class_kind._id,
         _longname="MalformedClass",
-        _contents="public class MalformedClass { public void method() { "  # Missing closing braces
+        _contents="public class MalformedClass { public void method() { "
     )
 
-    # Verify the entity was created despite malformed content
     assert malformed_class is not None
     assert malformed_class._name == "MalformedClass"
-    # The content should be preserved even if malformed
     assert "{" in malformed_class._contents
-    assert "}" not in malformed_class._contents  # Missing closing brace
+    assert "}" not in malformed_class._contents
 
 
 def test_malformed_missing_semicolon(temp_db, class_kind, method_kind):
     """Test handling of code with missing semicolon."""
-    # Create a class
     cls = EntityModel.create(
         _name="Main",
         _kind=class_kind._id,
         _longname="Main"
     )
 
-    # Create a method with missing semicolon in content
     malformed_method = EntityModel.create(
         _name="method",
         _kind=method_kind._id,
         _longname="Main.method",
-        _parent=cls._id,
-        _contents="public void method() { int x = 5 }"  # Missing semicolon
+        _parent=cls,
+        _contents="public void method() { int x = 5 }"
     )
 
-    # Verify method exists despite malformed content
     assert malformed_method is not None
     assert malformed_method._name == "method"
-    # The semicolon is missing
     assert ";" not in malformed_method._contents
 
 
 def test_malformed_wrong_keyword(temp_db, class_kind):
     """Test handling of code with wrong Java keyword."""
-    # Simulate a class with wrong keyword (e.g., "publc" instead of "public")
     malformed_class = EntityModel.create(
         _name="InvalidClass",
         _kind=class_kind._id,
         _longname="InvalidClass",
-        _contents="publc class InvalidClass { }"  # Wrong keyword
+        _contents="publc class InvalidClass { }"
     )
 
-    # Entity should still be created
     assert malformed_class is not None
     assert malformed_class._name == "InvalidClass"
-    # The content should preserve the malformed syntax
     assert "publc" in malformed_class._contents
 
 
@@ -128,12 +120,11 @@ def test_malformed_extra_brace(temp_db, class_kind, method_kind):
         _name="method",
         _kind=method_kind._id,
         _longname="ExtraBraces.method",
-        _parent=cls._id,
-        _contents="public void method() { { { } } }"  # Extra braces
+        _parent=cls,
+        _contents="public void method() { { { } } }"
     )
 
     assert malformed_method is not None
-    # Extra braces should be preserved in content
     assert malformed_method._contents.count("{") == 3
     assert malformed_method._contents.count("}") == 3
 
@@ -148,5 +139,4 @@ def test_malformed_unclosed_string(temp_db, class_kind):
     )
 
     assert malformed_class is not None
-    # The malformed string content should be preserved
     assert '"unclosed;' in malformed_class._contents

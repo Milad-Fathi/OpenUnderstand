@@ -32,8 +32,10 @@ def temp_db():
     if hasattr(db, 'close'):
         try:
             db.close()
-        except:
+        except AttributeError:
             pass
+        except OSError as e:
+            print(f"Warning: Could not close database: {e}")
 
     if os.path.exists(db_path):
         try:
@@ -43,14 +45,14 @@ def temp_db():
 
 
 @pytest.fixture
-def class_kind(temp_db):
+def class_kind():
     """Get Class kind."""
     kind, _ = KindModel.get_or_create(_name="Class", is_ent_kind=True)
     return kind
 
 
 @pytest.fixture
-def method_kind(temp_db):
+def method_kind():
     """Get Method kind."""
     kind, _ = KindModel.get_or_create(_name="Method", is_ent_kind=True)
     return kind
@@ -58,7 +60,6 @@ def method_kind(temp_db):
 
 def test_empty_class(temp_db, class_kind):
     """Test an empty class with no methods."""
-    # Create an empty class
     empty = EntityModel.create(
         _name="Empty",
         _kind=class_kind._id,
@@ -70,7 +71,6 @@ def test_empty_class(temp_db, class_kind):
     assert empty._name == "Empty"
     assert empty._kind._name == "Class"
 
-    # Should have no methods
     methods = EntityModel.select().where(EntityModel._parent == empty._id)
     assert methods.count() == 0
 
@@ -92,14 +92,12 @@ def test_class_with_long_name(temp_db, class_kind):
 
 def test_class_with_many_methods(temp_db, class_kind, method_kind):
     """Test class with many methods."""
-    # Create class
     cls = EntityModel.create(
         _name="ManyMethods",
         _kind=class_kind._id,
         _longname="ManyMethods"
     )
 
-    # Create 50 methods
     for i in range(50):
         EntityModel.create(
             _name=f"method{i}",
@@ -108,7 +106,6 @@ def test_class_with_many_methods(temp_db, class_kind, method_kind):
             _parent=cls
         )
 
-    # Verify all methods were created
     methods = EntityModel.select().where(EntityModel._parent == cls._id)
     assert methods.count() == 50
 
@@ -130,27 +127,22 @@ def test_class_with_special_characters(temp_db, class_kind):
 
 def test_deep_inheritance_chain(temp_db, class_kind):
     """Test deep inheritance chain."""
-    # Create 10 levels of inheritance
     parent = None
     for i in range(10):
         cls = EntityModel.create(
             _name=f"Level{i}",
             _kind=class_kind._id,
             _longname=f"Level{i}",
-            _parent=parent  # Pass the parent Entity object
+            _parent=parent
         )
         parent = cls
 
-    # Verify chain length
-    # Start from root (Level0 has no parent)
     root = EntityModel.get(EntityModel._name == "Level0")
     assert root._parent is None
 
-    # Follow chain down
     current = root
     for i in range(10):
         assert current._name == f"Level{i}"
-        # Get next level
         children = EntityModel.select().where(EntityModel._parent == current)
         if i < 9:
             assert children.count() == 1
@@ -161,10 +153,8 @@ def test_deep_inheritance_chain(temp_db, class_kind):
 
 def test_multiple_packages(temp_db, class_kind):
     """Test classes in multiple packages."""
-    # Create Package kind
     package_kind, _ = KindModel.get_or_create(_name="Package", is_ent_kind=True)
 
-    # Create packages
     packages = ["com.example", "com.test", "org.open"]
     for pkg_name in packages:
         pkg = EntityModel.create(
@@ -173,7 +163,6 @@ def test_multiple_packages(temp_db, class_kind):
             _longname=pkg_name
         )
 
-        # Create a class in each package
         EntityModel.create(
             _name=f"ClassIn{'_'.join(pkg_name.split('.'))}",
             _kind=class_kind._id,
@@ -181,7 +170,6 @@ def test_multiple_packages(temp_db, class_kind):
             _parent=pkg
         )
 
-    # Verify all packages have classes
     for pkg_name in packages:
         pkg = EntityModel.get(EntityModel._name == pkg_name)
         classes = EntityModel.select().where(EntityModel._parent == pkg)
