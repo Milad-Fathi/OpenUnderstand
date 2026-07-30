@@ -1,0 +1,606 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" /><title>Cosmic Ray Report</title></head><body><div class="container"><h1><p class="text-dark">Cosmic Ray Report</p></h1></div><div class="container"><div class="mb-1" id="summary_info___accordion"><div class="card"><a data-toggle="collapse" data-target="#summary_info___collapse_1" aria-expanded="true" aria-controls="summary_info___collapse_1" href="#"><div class="card-header" id="summary_info___heading_1"><button class="btn btn-outline-dark"><h4 class="m-0">Summary info</h4></button></div></a><div aria-labelledby="summary_info___heading_1" data-parent="#summary_info___accordion" class="collapse show" id="summary_info___collapse_1"><div class="card-body"><p>Date time: 30/07/2026 16:39:14</p><p>Total jobs: 28</p><p>Complete: 28 (100.00%)</p><p>Surviving mutants: 0 (0.00%)</p></div></div></div></div><div class="mb-1" id="job_list___accordion"><div class="card"><a data-toggle="collapse" data-target="#job_list___collapse_1" aria-expanded="false" aria-controls="job_list___collapse_1" href="#"><div class="card-header" id="job_list___heading_1"><button class="btn btn-outline-dark"><h4 class="m-0">Job list</h4></button></div></a><div aria-labelledby="job_list___heading_1" data-parent="#job_list___accordion" class="collapse" id="job_list___collapse_1"><div class="card-body"><div class="text-right mb-1"><div class="mx-1" id="job_item_expand_all"><a href="#" onclick="$('div.job_list___sub_multi_collapse').collapse('show');"><button class="btn btn-outline-dark"><span>Expand All</span></button></a></div><div class="mx-1" id="job_item_collapse_all"><a href="#" onclick="$('div.job_list___sub_multi_collapse').collapse('hide');"><button class="btn btn-outline-dark"><span>Collapse All</span></button></a></div></div><div class="mb-1" id="job_list___sub_accordion_1"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_1_1" aria-expanded="false" aria-controls="job_list___sub_collapse_1_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_1_1"><button class="btn btn-outline-success"><span class="job_id">1 : Job ID 7d15c217da8548b7b9310fe10cf602a5</span></button></div></a><div aria-labelledby="job_list___sub_heading_1_1" data-parent="#job_list___sub_accordion_1" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_1_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=openunderstand\oudb\models.py&amp;line=23" class="text-secondary"><button class="btn btn-outline-dark">openunderstand\oudb\models.py, start pos: (23, 15), end pos: (23, 18)</button></a></pre><pre>operator: core/ReplaceUnaryOperator_Delete_Not, occurrence: 0, definition_name: is_ref_kind</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aopenunderstand\oudb\models.py
++++ bopenunderstand\oudb\models.py
+@@ -20,7 +20,7 @@
+ 
+     @property
+     def is_ref_kind(self):
+-        return not self.is_ent_kind
++        return  self.is_ent_kind
+ 
+ 
+ class EntityModel(Model):</pre></div><div class="alert alert-secondary"><pre class="diff">timeout</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_2"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_2_1" aria-expanded="false" aria-controls="job_list___sub_collapse_2_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_2_1"><button class="btn btn-outline-success"><span class="job_id">2 : Job ID a04de013db3045fc9830c4e6807a05f5</span></button></div></a><div aria-labelledby="job_list___sub_heading_2_1" data-parent="#job_list___sub_accordion_2" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_2_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=openunderstand\oudb\models.py&amp;line=10" class="text-secondary"><button class="btn btn-outline-dark">openunderstand\oudb\models.py, start pos: (10, 40), end pos: (10, 44)</button></a></pre><pre>operator: core/ReplaceTrueWithFalse, occurrence: 0, definition_name: KindModel</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aopenunderstand\oudb\models.py
++++ bopenunderstand\oudb\models.py
+@@ -7,7 +7,7 @@
+     """
+ 
+     _id = AutoField()
+-    _inv = ForeignKeyField("self", null=True)
++    _inv = ForeignKeyField("self", null=False)
+     _name = CharField(max_length=256, unique=True)
+ 
+     is_ent_kind = BooleanField(default=True)</pre></div><div class="alert alert-secondary"><pre class="diff">============================= test session starts =============================
+platform win32 -- Python 3.10.1, pytest-8.4.2, pluggy-1.6.0 -- D:\university\MSc\4042\AdvanceSoftwareTestingAndProgramAnalysis\HWs\3\code\OpenUnderstand\venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: D:\university\MSc\4042\AdvanceSoftwareTestingAndProgramAnalysis\HWs\3\code\OpenUnderstand
+configfile: pyproject.toml
+plugins: cov-7.1.0
+collecting ... collected 45 items
+
+tests/test_config.py::test_config_defaults SKIPPED (config.ini not found
+- test skipped)                                                          [  2%]
+tests/test_config.py::test_project_import PASSED                         [  4%]
+tests/test_config.py::test_cli_import PASSED                             [  6%]
+tests/test_edge_cases.py::test_empty_class ERROR                         [  8%]
+
+=================================== ERRORS ====================================
+_____________________ ERROR at setup of test_empty_class ______________________
+venv\lib\site-packages\peewee.py:6884: in get
+    return clone.execute(database)[0]
+venv\lib\site-packages\peewee.py:4275: in __getitem__
+    return self.row_cache[item]
+E   IndexError: list index out of range
+
+During handling of the above exception, another exception occurred:
+venv\lib\site-packages\peewee.py:6480: in get_or_create
+    return query.get(), False
+venv\lib\site-packages\peewee.py:6887: in get
+    raise self.model.DoesNotExist('%s instance matching query does '
+E   openunderstand.oudb.models.KindModelDoesNotExist: &lt;Model: KindModel&gt; instance matching query does not exist:
+E   SQL: SELECT "t1"."_id", "t1"."_inv_id", "t1"."_name", "t1"."is_ent_kind" FROM "kindmodel" AS "t1" WHERE (("t1"."_name" = ?) AND ("t1"."is_ent_kind" = ?)) LIMIT ? OFFSET ?
+E   Params: ['Class', True, 1, 0]
+
+During handling of the above exception, another exception occurred:
+tests\test_edge_cases.py:28: in temp_db
+    KindModel.get_or_create(_name=kind_name, is_ent_kind=True)
+venv\lib\site-packages\peewee.py:6482: in get_or_create
+    raise exc
+venv\lib\site-packages\peewee.py:6477: in get_or_create
+    return cls.create(**kwargs), True
+venv\lib\site-packages\peewee.py:6346: in create
+    inst.save(force_insert=True)
+venv\lib\site-packages\peewee.py:6556: in save
+    pk = self.insert(**field_dict).execute()
+venv\lib\site-packages\peewee.py:1907: in inner
+    return method(self, database, *args, **kwargs)
+venv\lib\site-packages\peewee.py:1978: in execute
+    return self._execute(database)
+venv\lib\site-packages\peewee.py:2745: in _execute
+    return super(Insert, self)._execute(database)
+venv\lib\site-packages\peewee.py:2474: in _execute
+    cursor = database.execute(self)
+venv\lib\site-packages\peewee.py:3157: in execute
+    return self.execute_sql(sql, params, commit=commit)
+venv\lib\site-packages\peewee.py:3141: in execute_sql
+    with __exception_wrapper__:
+venv\lib\site-packages\peewee.py:2917: in __exit__
+    reraise(new_type, new_type(exc_value, *exc_args), traceback)
+venv\lib\site-packages\peewee.py:190: in reraise
+    raise value.with_traceback(tb)
+venv\lib\site-packages\peewee.py:3144: in execute_sql
+    cursor.execute(sql, params or ())
+E   peewee.IntegrityError: NOT NULL constraint failed: kindmodel._inv_id
+============================== warnings summary ===============================
+openunderstand\oudb\fill.py:8
+  D:\university\MSc\4042\AdvanceSoftwareTestingAndProgramAnalysis\HWs\3\code\OpenUnderstand\openunderstand\oudb\fill.py:8: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools&lt;81.
+    import pkg_resources
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+ERROR tests/test_edge_cases.py::test_empty_class - peewee.IntegrityError: NOT NULL constraint failed: kindmodel._inv_id
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+============== 2 passed, 1 skipped, 1 warning, 1 error in 4.59s ===============
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_3"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_3_1" aria-expanded="false" aria-controls="job_list___sub_collapse_3_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_3_1"><button class="btn btn-outline-success"><span class="job_id">3 : Job ID 543008472206419e98d544aef068eb08</span></button></div></a><div aria-labelledby="job_list___sub_heading_3_1" data-parent="#job_list___sub_accordion_3" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_3_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=openunderstand\oudb\models.py&amp;line=11" class="text-secondary"><button class="btn btn-outline-dark">openunderstand\oudb\models.py, start pos: (11, 45), end pos: (11, 49)</button></a></pre><pre>operator: core/ReplaceTrueWithFalse, occurrence: 1, definition_name: KindModel</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aopenunderstand\oudb\models.py
++++ bopenunderstand\oudb\models.py
+@@ -8,7 +8,7 @@
+ 
+     _id = AutoField()
+     _inv = ForeignKeyField("self", null=True)
+-    _name = CharField(max_length=256, unique=True)
++    _name = CharField(max_length=256, unique=False)
+ 
+     is_ent_kind = BooleanField(default=True)
+ </pre></div><div class="alert alert-secondary"><pre class="diff">timeout</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_4"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_4_1" aria-expanded="false" aria-controls="job_list___sub_collapse_4_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_4_1"><button class="btn btn-outline-success"><span class="job_id">4 : Job ID 113031c842844de6b8ffdaf312f4e469</span></button></div></a><div aria-labelledby="job_list___sub_heading_4_1" data-parent="#job_list___sub_accordion_4" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_4_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=openunderstand\oudb\models.py&amp;line=13" class="text-secondary"><button class="btn btn-outline-dark">openunderstand\oudb\models.py, start pos: (13, 39), end pos: (13, 43)</button></a></pre><pre>operator: core/ReplaceTrueWithFalse, occurrence: 2, definition_name: KindModel</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aopenunderstand\oudb\models.py
++++ bopenunderstand\oudb\models.py
+@@ -10,7 +10,7 @@
+     _inv = ForeignKeyField("self", null=True)
+     _name = CharField(max_length=256, unique=True)
+ 
+-    is_ent_kind = BooleanField(default=True)
++    is_ent_kind = BooleanField(default=False)
+ 
+     def __str__(self):
+         return str(self._name)</pre></div><div class="alert alert-secondary"><pre class="diff">timeout</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_5"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_5_1" aria-expanded="false" aria-controls="job_list___sub_collapse_5_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_5_1"><button class="btn btn-outline-success"><span class="job_id">5 : Job ID f0ec1b2cdf5b4f47a358accc8fa563ac</span></button></div></a><div aria-labelledby="job_list___sub_heading_5_1" data-parent="#job_list___sub_accordion_5" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_5_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=openunderstand\oudb\models.py&amp;line=29" class="text-secondary"><button class="btn btn-outline-dark">openunderstand\oudb\models.py, start pos: (29, 63), end pos: (29, 67)</button></a></pre><pre>operator: core/ReplaceTrueWithFalse, occurrence: 3, definition_name: EntityModel</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aopenunderstand\oudb\models.py
++++ bopenunderstand\oudb\models.py
+@@ -26,7 +26,7 @@
+ class EntityModel(Model):
+     _id = AutoField()
+     _kind = ForeignKeyField(KindModel, backref="entities")
+-    _parent = ForeignKeyField("self", backref="children", null=True)
++    _parent = ForeignKeyField("self", backref="children", null=False)
+     _name = CharField(max_length=512)
+     _longname = CharField(max_length=512)
+     _value = CharField(max_length=512, null=True)</pre></div><div class="alert alert-secondary"><pre class="diff">============================= test session starts =============================
+platform win32 -- Python 3.10.1, pytest-8.4.2, pluggy-1.6.0 -- D:\university\MSc\4042\AdvanceSoftwareTestingAndProgramAnalysis\HWs\3\code\OpenUnderstand\venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: D:\university\MSc\4042\AdvanceSoftwareTestingAndProgramAnalysis\HWs\3\code\OpenUnderstand
+configfile: pyproject.toml
+plugins: cov-7.1.0
+collecting ... collected 45 items
+
+tests/test_config.py::test_config_defaults SKIPPED (config.ini not found
+- test skipped)                                                          [  2%]
+tests/test_config.py::test_project_import PASSED                         [  4%]
+tests/test_config.py::test_cli_import PASSED                             [  6%]
+tests/test_edge_cases.py::test_empty_class FAILED                        [  8%]
+
+================================== FAILURES ===================================
+______________________________ test_empty_class _______________________________
+venv\lib\site-packages\peewee.py:3144: in execute_sql
+    cursor.execute(sql, params or ())
+E   sqlite3.IntegrityError: NOT NULL constraint failed: entitymodel._parent_id
+
+During handling of the above exception, another exception occurred:
+tests\test_edge_cases.py:63: in test_empty_class
+    empty = EntityModel.create(
+venv\lib\site-packages\peewee.py:6346: in create
+    inst.save(force_insert=True)
+venv\lib\site-packages\peewee.py:6556: in save
+    pk = self.insert(**field_dict).execute()
+venv\lib\site-packages\peewee.py:1907: in inner
+    return method(self, database, *args, **kwargs)
+venv\lib\site-packages\peewee.py:1978: in execute
+    return self._execute(database)
+venv\lib\site-packages\peewee.py:2745: in _execute
+    return super(Insert, self)._execute(database)
+venv\lib\site-packages\peewee.py:2474: in _execute
+    cursor = database.execute(self)
+venv\lib\site-packages\peewee.py:3157: in execute
+    return self.execute_sql(sql, params, commit=commit)
+venv\lib\site-packages\peewee.py:3141: in execute_sql
+    with __exception_wrapper__:
+venv\lib\site-packages\peewee.py:2917: in __exit__
+    reraise(new_type, new_type(exc_value, *exc_args), traceback)
+venv\lib\site-packages\peewee.py:190: in reraise
+    raise value.with_traceback(tb)
+venv\lib\site-packages\peewee.py:3144: in execute_sql
+    cursor.execute(sql, params or ())
+E   peewee.IntegrityError: NOT NULL constraint failed: entitymodel._parent_id
+============================== warnings summary ===============================
+openunderstand\oudb\fill.py:8
+  D:\university\MSc\4042\AdvanceSoftwareTestingAndProgramAnalysis\HWs\3\code\OpenUnderstand\openunderstand\oudb\fill.py:8: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools&lt;81.
+    import pkg_resources
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_edge_cases.py::test_empty_class - peewee.IntegrityError: NOT NULL constraint failed: entitymodel._parent_id
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+============== 1 failed, 2 passed, 1 skipped, 1 warning in 3.36s ==============
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_6"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_6_1" aria-expanded="false" aria-controls="job_list___sub_collapse_6_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_6_1"><button class="btn btn-outline-success"><span class="job_id">6 : Job ID e71aa8d1d2214c0ab6b620f59375676e</span></button></div></a><div aria-labelledby="job_list___sub_heading_6_1" data-parent="#job_list___sub_accordion_6" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_6_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=openunderstand\oudb\models.py&amp;line=32" class="text-secondary"><button class="btn btn-outline-dark">openunderstand\oudb\models.py, start pos: (32, 44), end pos: (32, 48)</button></a></pre><pre>operator: core/ReplaceTrueWithFalse, occurrence: 4, definition_name: EntityModel</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aopenunderstand\oudb\models.py
++++ bopenunderstand\oudb\models.py
+@@ -29,7 +29,7 @@
+     _parent = ForeignKeyField("self", backref="children", null=True)
+     _name = CharField(max_length=512)
+     _longname = CharField(max_length=512)
+-    _value = CharField(max_length=512, null=True)
++    _value = CharField(max_length=512, null=False)
+     _type = CharField(max_length=512, null=True)
+     _contents = TextField(null=True)
+ </pre></div><div class="alert alert-secondary"><pre class="diff">============================= test session starts =============================
+platform win32 -- Python 3.10.1, pytest-8.4.2, pluggy-1.6.0 -- D:\university\MSc\4042\AdvanceSoftwareTestingAndProgramAnalysis\HWs\3\code\OpenUnderstand\venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: D:\university\MSc\4042\AdvanceSoftwareTestingAndProgramAnalysis\HWs\3\code\OpenUnderstand
+configfile: pyproject.toml
+plugins: cov-7.1.0
+collecting ... collected 45 items
+
+tests/test_config.py::test_config_defaults SKIPPED (config.ini not found
+- test skipped)                                                          [  2%]
+tests/test_config.py::test_project_import PASSED                         [  4%]
+tests/test_config.py::test_cli_import PASSED                             [  6%]
+tests/test_edge_cases.py::test_empty_class FAILED                        [  8%]
+
+================================== FAILURES ===================================
+______________________________ test_empty_class _______________________________
+venv\lib\site-packages\peewee.py:3144: in execute_sql
+    cursor.execute(sql, params or ())
+E   sqlite3.IntegrityError: NOT NULL constraint failed: entitymodel._value
+
+During handling of the above exception, another exception occurred:
+tests\test_edge_cases.py:63: in test_empty_class
+    empty = EntityModel.create(
+venv\lib\site-packages\peewee.py:6346: in create
+    inst.save(force_insert=True)
+venv\lib\site-packages\peewee.py:6556: in save
+    pk = self.insert(**field_dict).execute()
+venv\lib\site-packages\peewee.py:1907: in inner
+    return method(self, database, *args, **kwargs)
+venv\lib\site-packages\peewee.py:1978: in execute
+    return self._execute(database)
+venv\lib\site-packages\peewee.py:2745: in _execute
+    return super(Insert, self)._execute(database)
+venv\lib\site-packages\peewee.py:2474: in _execute
+    cursor = database.execute(self)
+venv\lib\site-packages\peewee.py:3157: in execute
+    return self.execute_sql(sql, params, commit=commit)
+venv\lib\site-packages\peewee.py:3141: in execute_sql
+    with __exception_wrapper__:
+venv\lib\site-packages\peewee.py:2917: in __exit__
+    reraise(new_type, new_type(exc_value, *exc_args), traceback)
+venv\lib\site-packages\peewee.py:190: in reraise
+    raise value.with_traceback(tb)
+venv\lib\site-packages\peewee.py:3144: in execute_sql
+    cursor.execute(sql, params or ())
+E   peewee.IntegrityError: NOT NULL constraint failed: entitymodel._value
+============================== warnings summary ===============================
+openunderstand\oudb\fill.py:8
+  D:\university\MSc\4042\AdvanceSoftwareTestingAndProgramAnalysis\HWs\3\code\OpenUnderstand\openunderstand\oudb\fill.py:8: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools&lt;81.
+    import pkg_resources
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_edge_cases.py::test_empty_class - peewee.IntegrityError: NOT NULL constraint failed: entitymodel._value
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+============== 1 failed, 2 passed, 1 skipped, 1 warning in 3.38s ==============
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_7"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_7_1" aria-expanded="false" aria-controls="job_list___sub_collapse_7_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_7_1"><button class="btn btn-outline-success"><span class="job_id">7 : Job ID 46d156e366b04d64b29da300e262cec8</span></button></div></a><div aria-labelledby="job_list___sub_heading_7_1" data-parent="#job_list___sub_accordion_7" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_7_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=openunderstand\oudb\models.py&amp;line=33" class="text-secondary"><button class="btn btn-outline-dark">openunderstand\oudb\models.py, start pos: (33, 43), end pos: (33, 47)</button></a></pre><pre>operator: core/ReplaceTrueWithFalse, occurrence: 5, definition_name: EntityModel</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aopenunderstand\oudb\models.py
++++ bopenunderstand\oudb\models.py
+@@ -30,7 +30,7 @@
+     _name = CharField(max_length=512)
+     _longname = CharField(max_length=512)
+     _value = CharField(max_length=512, null=True)
+-    _type = CharField(max_length=512, null=True)
++    _type = CharField(max_length=512, null=False)
+     _contents = TextField(null=True)
+ 
+     def __str__(self):</pre></div><div class="alert alert-secondary"><pre class="diff">============================= test session starts =============================
+platform win32 -- Python 3.10.1, pytest-8.4.2, pluggy-1.6.0 -- D:\university\MSc\4042\AdvanceSoftwareTestingAndProgramAnalysis\HWs\3\code\OpenUnderstand\venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: D:\university\MSc\4042\AdvanceSoftwareTestingAndProgramAnalysis\HWs\3\code\OpenUnderstand
+configfile: pyproject.toml
+plugins: cov-7.1.0
+collecting ... collected 45 items
+
+tests/test_config.py::test_config_defaults SKIPPED (config.ini not found
+- test skipped)                                                          [  2%]
+tests/test_config.py::test_project_import PASSED                         [  4%]
+tests/test_config.py::test_cli_import PASSED                             [  6%]
+tests/test_edge_cases.py::test_empty_class FAILED                        [  8%]
+
+================================== FAILURES ===================================
+______________________________ test_empty_class _______________________________
+venv\lib\site-packages\peewee.py:3144: in execute_sql
+    cursor.execute(sql, params or ())
+E   sqlite3.IntegrityError: NOT NULL constraint failed: entitymodel._type
+
+During handling of the above exception, another exception occurred:
+tests\test_edge_cases.py:63: in test_empty_class
+    empty = EntityModel.create(
+venv\lib\site-packages\peewee.py:6346: in create
+    inst.save(force_insert=True)
+venv\lib\site-packages\peewee.py:6556: in save
+    pk = self.insert(**field_dict).execute()
+venv\lib\site-packages\peewee.py:1907: in inner
+    return method(self, database, *args, **kwargs)
+venv\lib\site-packages\peewee.py:1978: in execute
+    return self._execute(database)
+venv\lib\site-packages\peewee.py:2745: in _execute
+    return super(Insert, self)._execute(database)
+venv\lib\site-packages\peewee.py:2474: in _execute
+    cursor = database.execute(self)
+venv\lib\site-packages\peewee.py:3157: in execute
+    return self.execute_sql(sql, params, commit=commit)
+venv\lib\site-packages\peewee.py:3141: in execute_sql
+    with __exception_wrapper__:
+venv\lib\site-packages\peewee.py:2917: in __exit__
+    reraise(new_type, new_type(exc_value, *exc_args), traceback)
+venv\lib\site-packages\peewee.py:190: in reraise
+    raise value.with_traceback(tb)
+venv\lib\site-packages\peewee.py:3144: in execute_sql
+    cursor.execute(sql, params or ())
+E   peewee.IntegrityError: NOT NULL constraint failed: entitymodel._type
+============================== warnings summary ===============================
+openunderstand\oudb\fill.py:8
+  D:\university\MSc\4042\AdvanceSoftwareTestingAndProgramAnalysis\HWs\3\code\OpenUnderstand\openunderstand\oudb\fill.py:8: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools&lt;81.
+    import pkg_resources
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_edge_cases.py::test_empty_class - peewee.IntegrityError: NOT NULL constraint failed: entitymodel._type
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+============== 1 failed, 2 passed, 1 skipped, 1 warning in 3.46s ==============
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_8"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_8_1" aria-expanded="false" aria-controls="job_list___sub_collapse_8_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_8_1"><button class="btn btn-outline-success"><span class="job_id">8 : Job ID 98b804d7214f47b3878bbb2246184aa9</span></button></div></a><div aria-labelledby="job_list___sub_heading_8_1" data-parent="#job_list___sub_accordion_8" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_8_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=openunderstand\oudb\models.py&amp;line=34" class="text-secondary"><button class="btn btn-outline-dark">openunderstand\oudb\models.py, start pos: (34, 31), end pos: (34, 35)</button></a></pre><pre>operator: core/ReplaceTrueWithFalse, occurrence: 6, definition_name: EntityModel</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aopenunderstand\oudb\models.py
++++ bopenunderstand\oudb\models.py
+@@ -31,7 +31,7 @@
+     _longname = CharField(max_length=512)
+     _value = CharField(max_length=512, null=True)
+     _type = CharField(max_length=512, null=True)
+-    _contents = TextField(null=True)
++    _contents = TextField(null=False)
+ 
+     def __str__(self):
+         return str(self._name)</pre></div><div class="alert alert-secondary"><pre class="diff">============================= test session starts =============================
+platform win32 -- Python 3.10.1, pytest-8.4.2, pluggy-1.6.0 -- D:\university\MSc\4042\AdvanceSoftwareTestingAndProgramAnalysis\HWs\3\code\OpenUnderstand\venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: D:\university\MSc\4042\AdvanceSoftwareTestingAndProgramAnalysis\HWs\3\code\OpenUnderstand
+configfile: pyproject.toml
+plugins: cov-7.1.0
+collecting ... collected 45 items
+
+tests/test_config.py::test_config_defaults SKIPPED (config.ini not found
+- test skipped)                                                          [  2%]
+tests/test_config.py::test_project_import PASSED                         [  4%]
+tests/test_config.py::test_cli_import PASSED                             [  6%]
+tests/test_edge_cases.py::test_empty_class PASSED                        [  8%]
+tests/test_edge_cases.py::test_class_with_long_name PASSED               [ 11%]
+tests/test_edge_cases.py::test_class_with_many_methods FAILED            [ 13%]
+
+================================== FAILURES ===================================
+________________________ test_class_with_many_methods _________________________
+venv\lib\site-packages\peewee.py:3144: in execute_sql
+    cursor.execute(sql, params or ())
+E   sqlite3.IntegrityError: NOT NULL constraint failed: entitymodel._contents
+
+During handling of the above exception, another exception occurred:
+tests\test_edge_cases.py:95: in test_class_with_many_methods
+    cls = EntityModel.create(
+venv\lib\site-packages\peewee.py:6346: in create
+    inst.save(force_insert=True)
+venv\lib\site-packages\peewee.py:6556: in save
+    pk = self.insert(**field_dict).execute()
+venv\lib\site-packages\peewee.py:1907: in inner
+    return method(self, database, *args, **kwargs)
+venv\lib\site-packages\peewee.py:1978: in execute
+    return self._execute(database)
+venv\lib\site-packages\peewee.py:2745: in _execute
+    return super(Insert, self)._execute(database)
+venv\lib\site-packages\peewee.py:2474: in _execute
+    cursor = database.execute(self)
+venv\lib\site-packages\peewee.py:3157: in execute
+    return self.execute_sql(sql, params, commit=commit)
+venv\lib\site-packages\peewee.py:3141: in execute_sql
+    with __exception_wrapper__:
+venv\lib\site-packages\peewee.py:2917: in __exit__
+    reraise(new_type, new_type(exc_value, *exc_args), traceback)
+venv\lib\site-packages\peewee.py:190: in reraise
+    raise value.with_traceback(tb)
+venv\lib\site-packages\peewee.py:3144: in execute_sql
+    cursor.execute(sql, params or ())
+E   peewee.IntegrityError: NOT NULL constraint failed: entitymodel._contents
+============================== warnings summary ===============================
+openunderstand\oudb\fill.py:8
+  D:\university\MSc\4042\AdvanceSoftwareTestingAndProgramAnalysis\HWs\3\code\OpenUnderstand\openunderstand\oudb\fill.py:8: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools&lt;81.
+    import pkg_resources
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_edge_cases.py::test_class_with_many_methods - peewee.IntegrityError: NOT NULL constraint failed: entitymodel._contents
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+============== 1 failed, 4 passed, 1 skipped, 1 warning in 3.62s ==============
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_9"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_9_1" aria-expanded="false" aria-controls="job_list___sub_collapse_9_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_9_1"><button class="btn btn-outline-success"><span class="job_id">9 : Job ID 835f2b78bc134740aa350ea456bde65a</span></button></div></a><div aria-labelledby="job_list___sub_heading_9_1" data-parent="#job_list___sub_accordion_9" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_9_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=openunderstand\oudb\models.py&amp;line=62" class="text-secondary"><button class="btn btn-outline-dark">openunderstand\oudb\models.py, start pos: (62, 48), end pos: (62, 52)</button></a></pre><pre>operator: core/ReplaceTrueWithFalse, occurrence: 7, definition_name: ProjectModel</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aopenunderstand\oudb\models.py
++++ bopenunderstand\oudb\models.py
+@@ -59,7 +59,7 @@
+     name = CharField(max_length=128)
+     language = CharField(max_length=128, default="Java")
+     root = CharField(max_length=1024)
+-    db_path = CharField(max_length=1024, unique=True)
++    db_path = CharField(max_length=1024, unique=False)
+ 
+     def __str__(self):
+         return str(self.name)</pre></div><div class="alert alert-secondary"><pre class="diff">timeout</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_10"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_10_1" aria-expanded="false" aria-controls="job_list___sub_collapse_10_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_10_1"><button class="btn btn-outline-success"><span class="job_id">10 : Job ID 8ac31da764114fe19f35f964e878efe5</span></button></div></a><div aria-labelledby="job_list___sub_heading_10_1" data-parent="#job_list___sub_accordion_10" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_10_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=openunderstand\oudb\models.py&amp;line=11" class="text-secondary"><button class="btn btn-outline-dark">openunderstand\oudb\models.py, start pos: (11, 33), end pos: (11, 36)</button></a></pre><pre>operator: core/NumberReplacer, occurrence: 0, definition_name: KindModel</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aopenunderstand\oudb\models.py
++++ bopenunderstand\oudb\models.py
+@@ -8,7 +8,7 @@
+ 
+     _id = AutoField()
+     _inv = ForeignKeyField("self", null=True)
+-    _name = CharField(max_length=256, unique=True)
++    _name = CharField(max_length= 257, unique=True)
+ 
+     is_ent_kind = BooleanField(default=True)
+ </pre></div><div class="alert alert-secondary"><pre class="diff">timeout</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_11"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_11_1" aria-expanded="false" aria-controls="job_list___sub_collapse_11_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_11_1"><button class="btn btn-outline-success"><span class="job_id">11 : Job ID 0b95f826333d46b0866bbc83aebbc75c</span></button></div></a><div aria-labelledby="job_list___sub_heading_11_1" data-parent="#job_list___sub_accordion_11" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_11_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=openunderstand\oudb\models.py&amp;line=11" class="text-secondary"><button class="btn btn-outline-dark">openunderstand\oudb\models.py, start pos: (11, 33), end pos: (11, 36)</button></a></pre><pre>operator: core/NumberReplacer, occurrence: 1, definition_name: KindModel</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aopenunderstand\oudb\models.py
++++ bopenunderstand\oudb\models.py
+@@ -8,7 +8,7 @@
+ 
+     _id = AutoField()
+     _inv = ForeignKeyField("self", null=True)
+-    _name = CharField(max_length=256, unique=True)
++    _name = CharField(max_length= 255, unique=True)
+ 
+     is_ent_kind = BooleanField(default=True)
+ </pre></div><div class="alert alert-secondary"><pre class="diff">timeout</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_12"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_12_1" aria-expanded="false" aria-controls="job_list___sub_collapse_12_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_12_1"><button class="btn btn-outline-success"><span class="job_id">12 : Job ID 994b9d89448047708fa7256a4893218a</span></button></div></a><div aria-labelledby="job_list___sub_heading_12_1" data-parent="#job_list___sub_accordion_12" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_12_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=openunderstand\oudb\models.py&amp;line=30" class="text-secondary"><button class="btn btn-outline-dark">openunderstand\oudb\models.py, start pos: (30, 33), end pos: (30, 36)</button></a></pre><pre>operator: core/NumberReplacer, occurrence: 2, definition_name: EntityModel</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aopenunderstand\oudb\models.py
++++ bopenunderstand\oudb\models.py
+@@ -27,7 +27,7 @@
+     _id = AutoField()
+     _kind = ForeignKeyField(KindModel, backref="entities")
+     _parent = ForeignKeyField("self", backref="children", null=True)
+-    _name = CharField(max_length=512)
++    _name = CharField(max_length= 513)
+     _longname = CharField(max_length=512)
+     _value = CharField(max_length=512, null=True)
+     _type = CharField(max_length=512, null=True)</pre></div><div class="alert alert-secondary"><pre class="diff">timeout</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_13"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_13_1" aria-expanded="false" aria-controls="job_list___sub_collapse_13_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_13_1"><button class="btn btn-outline-success"><span class="job_id">13 : Job ID a491af3039184a30b2c637866eebde13</span></button></div></a><div aria-labelledby="job_list___sub_heading_13_1" data-parent="#job_list___sub_accordion_13" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_13_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=openunderstand\oudb\models.py&amp;line=30" class="text-secondary"><button class="btn btn-outline-dark">openunderstand\oudb\models.py, start pos: (30, 33), end pos: (30, 36)</button></a></pre><pre>operator: core/NumberReplacer, occurrence: 3, definition_name: EntityModel</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aopenunderstand\oudb\models.py
++++ bopenunderstand\oudb\models.py
+@@ -27,7 +27,7 @@
+     _id = AutoField()
+     _kind = ForeignKeyField(KindModel, backref="entities")
+     _parent = ForeignKeyField("self", backref="children", null=True)
+-    _name = CharField(max_length=512)
++    _name = CharField(max_length= 511)
+     _longname = CharField(max_length=512)
+     _value = CharField(max_length=512, null=True)
+     _type = CharField(max_length=512, null=True)</pre></div><div class="alert alert-secondary"><pre class="diff">timeout</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_14"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_14_1" aria-expanded="false" aria-controls="job_list___sub_collapse_14_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_14_1"><button class="btn btn-outline-success"><span class="job_id">14 : Job ID 83ad49197b7c4e73b7c10af27ab5f3bf</span></button></div></a><div aria-labelledby="job_list___sub_heading_14_1" data-parent="#job_list___sub_accordion_14" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_14_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=openunderstand\oudb\models.py&amp;line=31" class="text-secondary"><button class="btn btn-outline-dark">openunderstand\oudb\models.py, start pos: (31, 37), end pos: (31, 40)</button></a></pre><pre>operator: core/NumberReplacer, occurrence: 4, definition_name: EntityModel</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aopenunderstand\oudb\models.py
++++ bopenunderstand\oudb\models.py
+@@ -28,7 +28,7 @@
+     _kind = ForeignKeyField(KindModel, backref="entities")
+     _parent = ForeignKeyField("self", backref="children", null=True)
+     _name = CharField(max_length=512)
+-    _longname = CharField(max_length=512)
++    _longname = CharField(max_length= 513)
+     _value = CharField(max_length=512, null=True)
+     _type = CharField(max_length=512, null=True)
+     _contents = TextField(null=True)</pre></div><div class="alert alert-secondary"><pre class="diff">timeout</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_15"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_15_1" aria-expanded="false" aria-controls="job_list___sub_collapse_15_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_15_1"><button class="btn btn-outline-success"><span class="job_id">15 : Job ID 4c2179737c924e739e38da3fd2d222ec</span></button></div></a><div aria-labelledby="job_list___sub_heading_15_1" data-parent="#job_list___sub_accordion_15" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_15_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=openunderstand\oudb\models.py&amp;line=31" class="text-secondary"><button class="btn btn-outline-dark">openunderstand\oudb\models.py, start pos: (31, 37), end pos: (31, 40)</button></a></pre><pre>operator: core/NumberReplacer, occurrence: 5, definition_name: EntityModel</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aopenunderstand\oudb\models.py
++++ bopenunderstand\oudb\models.py
+@@ -28,7 +28,7 @@
+     _kind = ForeignKeyField(KindModel, backref="entities")
+     _parent = ForeignKeyField("self", backref="children", null=True)
+     _name = CharField(max_length=512)
+-    _longname = CharField(max_length=512)
++    _longname = CharField(max_length= 511)
+     _value = CharField(max_length=512, null=True)
+     _type = CharField(max_length=512, null=True)
+     _contents = TextField(null=True)</pre></div><div class="alert alert-secondary"><pre class="diff">timeout</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_16"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_16_1" aria-expanded="false" aria-controls="job_list___sub_collapse_16_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_16_1"><button class="btn btn-outline-success"><span class="job_id">16 : Job ID 97a81c29eead454bbd41f2b8ef8c9551</span></button></div></a><div aria-labelledby="job_list___sub_heading_16_1" data-parent="#job_list___sub_accordion_16" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_16_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=openunderstand\oudb\models.py&amp;line=32" class="text-secondary"><button class="btn btn-outline-dark">openunderstand\oudb\models.py, start pos: (32, 34), end pos: (32, 37)</button></a></pre><pre>operator: core/NumberReplacer, occurrence: 6, definition_name: EntityModel</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aopenunderstand\oudb\models.py
++++ bopenunderstand\oudb\models.py
+@@ -29,7 +29,7 @@
+     _parent = ForeignKeyField("self", backref="children", null=True)
+     _name = CharField(max_length=512)
+     _longname = CharField(max_length=512)
+-    _value = CharField(max_length=512, null=True)
++    _value = CharField(max_length= 513, null=True)
+     _type = CharField(max_length=512, null=True)
+     _contents = TextField(null=True)
+ </pre></div><div class="alert alert-secondary"><pre class="diff">timeout</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_17"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_17_1" aria-expanded="false" aria-controls="job_list___sub_collapse_17_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_17_1"><button class="btn btn-outline-success"><span class="job_id">17 : Job ID 2baa6ad1df0349939ed05d67fcaaa8c8</span></button></div></a><div aria-labelledby="job_list___sub_heading_17_1" data-parent="#job_list___sub_accordion_17" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_17_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=openunderstand\oudb\models.py&amp;line=32" class="text-secondary"><button class="btn btn-outline-dark">openunderstand\oudb\models.py, start pos: (32, 34), end pos: (32, 37)</button></a></pre><pre>operator: core/NumberReplacer, occurrence: 7, definition_name: EntityModel</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aopenunderstand\oudb\models.py
++++ bopenunderstand\oudb\models.py
+@@ -29,7 +29,7 @@
+     _parent = ForeignKeyField("self", backref="children", null=True)
+     _name = CharField(max_length=512)
+     _longname = CharField(max_length=512)
+-    _value = CharField(max_length=512, null=True)
++    _value = CharField(max_length= 511, null=True)
+     _type = CharField(max_length=512, null=True)
+     _contents = TextField(null=True)
+ </pre></div><div class="alert alert-secondary"><pre class="diff">timeout</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_18"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_18_1" aria-expanded="false" aria-controls="job_list___sub_collapse_18_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_18_1"><button class="btn btn-outline-success"><span class="job_id">18 : Job ID 05e6430747a242bbabbe298260ba316c</span></button></div></a><div aria-labelledby="job_list___sub_heading_18_1" data-parent="#job_list___sub_accordion_18" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_18_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=openunderstand\oudb\models.py&amp;line=33" class="text-secondary"><button class="btn btn-outline-dark">openunderstand\oudb\models.py, start pos: (33, 33), end pos: (33, 36)</button></a></pre><pre>operator: core/NumberReplacer, occurrence: 8, definition_name: EntityModel</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aopenunderstand\oudb\models.py
++++ bopenunderstand\oudb\models.py
+@@ -30,7 +30,7 @@
+     _name = CharField(max_length=512)
+     _longname = CharField(max_length=512)
+     _value = CharField(max_length=512, null=True)
+-    _type = CharField(max_length=512, null=True)
++    _type = CharField(max_length= 513, null=True)
+     _contents = TextField(null=True)
+ 
+     def __str__(self):</pre></div><div class="alert alert-secondary"><pre class="diff">timeout</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_19"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_19_1" aria-expanded="false" aria-controls="job_list___sub_collapse_19_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_19_1"><button class="btn btn-outline-success"><span class="job_id">19 : Job ID 423fb647ccf744d491ad0764f8303d6b</span></button></div></a><div aria-labelledby="job_list___sub_heading_19_1" data-parent="#job_list___sub_accordion_19" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_19_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=openunderstand\oudb\models.py&amp;line=33" class="text-secondary"><button class="btn btn-outline-dark">openunderstand\oudb\models.py, start pos: (33, 33), end pos: (33, 36)</button></a></pre><pre>operator: core/NumberReplacer, occurrence: 9, definition_name: EntityModel</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aopenunderstand\oudb\models.py
++++ bopenunderstand\oudb\models.py
+@@ -30,7 +30,7 @@
+     _name = CharField(max_length=512)
+     _longname = CharField(max_length=512)
+     _value = CharField(max_length=512, null=True)
+-    _type = CharField(max_length=512, null=True)
++    _type = CharField(max_length= 511, null=True)
+     _contents = TextField(null=True)
+ 
+     def __str__(self):</pre></div><div class="alert alert-secondary"><pre class="diff">timeout</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_20"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_20_1" aria-expanded="false" aria-controls="job_list___sub_collapse_20_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_20_1"><button class="btn btn-outline-success"><span class="job_id">20 : Job ID fa43091eb7044c0c867b8943b2281fac</span></button></div></a><div aria-labelledby="job_list___sub_heading_20_1" data-parent="#job_list___sub_accordion_20" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_20_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=openunderstand\oudb\models.py&amp;line=59" class="text-secondary"><button class="btn btn-outline-dark">openunderstand\oudb\models.py, start pos: (59, 32), end pos: (59, 35)</button></a></pre><pre>operator: core/NumberReplacer, occurrence: 10, definition_name: ProjectModel</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aopenunderstand\oudb\models.py
++++ bopenunderstand\oudb\models.py
+@@ -56,7 +56,7 @@
+ 
+ 
+ class ProjectModel(Model):
+-    name = CharField(max_length=128)
++    name = CharField(max_length= 129)
+     language = CharField(max_length=128, default="Java")
+     root = CharField(max_length=1024)
+     db_path = CharField(max_length=1024, unique=True)</pre></div><div class="alert alert-secondary"><pre class="diff">timeout</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_21"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_21_1" aria-expanded="false" aria-controls="job_list___sub_collapse_21_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_21_1"><button class="btn btn-outline-success"><span class="job_id">21 : Job ID 64ed62e33a864b019ee7e1794bb8e874</span></button></div></a><div aria-labelledby="job_list___sub_heading_21_1" data-parent="#job_list___sub_accordion_21" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_21_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=openunderstand\oudb\models.py&amp;line=59" class="text-secondary"><button class="btn btn-outline-dark">openunderstand\oudb\models.py, start pos: (59, 32), end pos: (59, 35)</button></a></pre><pre>operator: core/NumberReplacer, occurrence: 11, definition_name: ProjectModel</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aopenunderstand\oudb\models.py
++++ bopenunderstand\oudb\models.py
+@@ -56,7 +56,7 @@
+ 
+ 
+ class ProjectModel(Model):
+-    name = CharField(max_length=128)
++    name = CharField(max_length= 127)
+     language = CharField(max_length=128, default="Java")
+     root = CharField(max_length=1024)
+     db_path = CharField(max_length=1024, unique=True)</pre></div><div class="alert alert-secondary"><pre class="diff">timeout</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_22"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_22_1" aria-expanded="false" aria-controls="job_list___sub_collapse_22_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_22_1"><button class="btn btn-outline-success"><span class="job_id">22 : Job ID c85b342698e5474f86f9827c0dbd1124</span></button></div></a><div aria-labelledby="job_list___sub_heading_22_1" data-parent="#job_list___sub_accordion_22" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_22_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=openunderstand\oudb\models.py&amp;line=60" class="text-secondary"><button class="btn btn-outline-dark">openunderstand\oudb\models.py, start pos: (60, 36), end pos: (60, 39)</button></a></pre><pre>operator: core/NumberReplacer, occurrence: 12, definition_name: ProjectModel</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aopenunderstand\oudb\models.py
++++ bopenunderstand\oudb\models.py
+@@ -57,7 +57,7 @@
+ 
+ class ProjectModel(Model):
+     name = CharField(max_length=128)
+-    language = CharField(max_length=128, default="Java")
++    language = CharField(max_length= 129, default="Java")
+     root = CharField(max_length=1024)
+     db_path = CharField(max_length=1024, unique=True)
+ </pre></div><div class="alert alert-secondary"><pre class="diff">timeout</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_23"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_23_1" aria-expanded="false" aria-controls="job_list___sub_collapse_23_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_23_1"><button class="btn btn-outline-success"><span class="job_id">23 : Job ID 9e6568f8312c4bff827cde490278bdba</span></button></div></a><div aria-labelledby="job_list___sub_heading_23_1" data-parent="#job_list___sub_accordion_23" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_23_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=openunderstand\oudb\models.py&amp;line=60" class="text-secondary"><button class="btn btn-outline-dark">openunderstand\oudb\models.py, start pos: (60, 36), end pos: (60, 39)</button></a></pre><pre>operator: core/NumberReplacer, occurrence: 13, definition_name: ProjectModel</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aopenunderstand\oudb\models.py
++++ bopenunderstand\oudb\models.py
+@@ -57,7 +57,7 @@
+ 
+ class ProjectModel(Model):
+     name = CharField(max_length=128)
+-    language = CharField(max_length=128, default="Java")
++    language = CharField(max_length= 127, default="Java")
+     root = CharField(max_length=1024)
+     db_path = CharField(max_length=1024, unique=True)
+ </pre></div><div class="alert alert-secondary"><pre class="diff">timeout</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_24"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_24_1" aria-expanded="false" aria-controls="job_list___sub_collapse_24_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_24_1"><button class="btn btn-outline-success"><span class="job_id">24 : Job ID 7aa516ccb7274651b10f15befdc27238</span></button></div></a><div aria-labelledby="job_list___sub_heading_24_1" data-parent="#job_list___sub_accordion_24" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_24_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=openunderstand\oudb\models.py&amp;line=61" class="text-secondary"><button class="btn btn-outline-dark">openunderstand\oudb\models.py, start pos: (61, 32), end pos: (61, 36)</button></a></pre><pre>operator: core/NumberReplacer, occurrence: 14, definition_name: ProjectModel</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aopenunderstand\oudb\models.py
++++ bopenunderstand\oudb\models.py
+@@ -58,7 +58,7 @@
+ class ProjectModel(Model):
+     name = CharField(max_length=128)
+     language = CharField(max_length=128, default="Java")
+-    root = CharField(max_length=1024)
++    root = CharField(max_length= 1025)
+     db_path = CharField(max_length=1024, unique=True)
+ 
+     def __str__(self):</pre></div><div class="alert alert-secondary"><pre class="diff">timeout</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_25"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_25_1" aria-expanded="false" aria-controls="job_list___sub_collapse_25_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_25_1"><button class="btn btn-outline-success"><span class="job_id">25 : Job ID 71fa476df3644878ae15e3bfc23ccee7</span></button></div></a><div aria-labelledby="job_list___sub_heading_25_1" data-parent="#job_list___sub_accordion_25" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_25_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=openunderstand\oudb\models.py&amp;line=61" class="text-secondary"><button class="btn btn-outline-dark">openunderstand\oudb\models.py, start pos: (61, 32), end pos: (61, 36)</button></a></pre><pre>operator: core/NumberReplacer, occurrence: 15, definition_name: ProjectModel</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aopenunderstand\oudb\models.py
++++ bopenunderstand\oudb\models.py
+@@ -58,7 +58,7 @@
+ class ProjectModel(Model):
+     name = CharField(max_length=128)
+     language = CharField(max_length=128, default="Java")
+-    root = CharField(max_length=1024)
++    root = CharField(max_length= 1023)
+     db_path = CharField(max_length=1024, unique=True)
+ 
+     def __str__(self):</pre></div><div class="alert alert-secondary"><pre class="diff">timeout</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_26"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_26_1" aria-expanded="false" aria-controls="job_list___sub_collapse_26_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_26_1"><button class="btn btn-outline-success"><span class="job_id">26 : Job ID ed83c543c8fb487db1b17422103bbb00</span></button></div></a><div aria-labelledby="job_list___sub_heading_26_1" data-parent="#job_list___sub_accordion_26" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_26_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=openunderstand\oudb\models.py&amp;line=62" class="text-secondary"><button class="btn btn-outline-dark">openunderstand\oudb\models.py, start pos: (62, 35), end pos: (62, 39)</button></a></pre><pre>operator: core/NumberReplacer, occurrence: 16, definition_name: ProjectModel</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aopenunderstand\oudb\models.py
++++ bopenunderstand\oudb\models.py
+@@ -59,7 +59,7 @@
+     name = CharField(max_length=128)
+     language = CharField(max_length=128, default="Java")
+     root = CharField(max_length=1024)
+-    db_path = CharField(max_length=1024, unique=True)
++    db_path = CharField(max_length= 1025, unique=True)
+ 
+     def __str__(self):
+         return str(self.name)</pre></div><div class="alert alert-secondary"><pre class="diff">timeout</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_27"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_27_1" aria-expanded="false" aria-controls="job_list___sub_collapse_27_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_27_1"><button class="btn btn-outline-success"><span class="job_id">27 : Job ID 0eca4771071748ff921a737673299673</span></button></div></a><div aria-labelledby="job_list___sub_heading_27_1" data-parent="#job_list___sub_accordion_27" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_27_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=openunderstand\oudb\models.py&amp;line=62" class="text-secondary"><button class="btn btn-outline-dark">openunderstand\oudb\models.py, start pos: (62, 35), end pos: (62, 39)</button></a></pre><pre>operator: core/NumberReplacer, occurrence: 17, definition_name: ProjectModel</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aopenunderstand\oudb\models.py
++++ bopenunderstand\oudb\models.py
+@@ -59,7 +59,7 @@
+     name = CharField(max_length=128)
+     language = CharField(max_length=128, default="Java")
+     root = CharField(max_length=1024)
+-    db_path = CharField(max_length=1024, unique=True)
++    db_path = CharField(max_length= 1023, unique=True)
+ 
+     def __str__(self):
+         return str(self.name)</pre></div><div class="alert alert-secondary"><pre class="diff">timeout</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_28"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_28_1" aria-expanded="false" aria-controls="job_list___sub_collapse_28_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_28_1"><button class="btn btn-outline-success"><span class="job_id">28 : Job ID 664bd208fb2f45b8846c98ebb3282ef9</span></button></div></a><div aria-labelledby="job_list___sub_heading_28_1" data-parent="#job_list___sub_accordion_28" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_28_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=openunderstand\oudb\models.py&amp;line=21" class="text-secondary"><button class="btn btn-outline-dark">openunderstand\oudb\models.py, start pos: (21, 4), end pos: (22, 0)</button></a></pre><pre>operator: core/RemoveDecorator, occurrence: 0, definition_name: KindModel</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aopenunderstand\oudb\models.py
++++ bopenunderstand\oudb\models.py
+@@ -17,8 +17,6 @@
+ 
+     def __repr__(self):
+         return str(self._name)
+-
+-    @property
+     def is_ref_kind(self):
+         return not self.is_ent_kind
+ </pre></div><div class="alert alert-secondary"><pre class="diff">timeout</pre></div></div></div></div></div></div></div></div></div></div><script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script><script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script><script type="text/javascript">$('div.job_list___sub_multi_collapse').on('shown.bs.collapse',  function () {    correct_behavior_functional_buttons();  });$('div.job_list___sub_multi_collapse').on('hidden.bs.collapse',  function () {    correct_behavior_functional_buttons();  });function correct_behavior_functional_buttons() {    var expand = false;    var collapse = false;    $('a.job_list___sub_multi_heading').each(function(index) {      if ($(this).attr('aria-expanded') == 'false') {        expand = true;        return false;      };    });    $('a.job_list___sub_multi_heading').each(function(index) {      if ($(this).attr('aria-expanded') == 'true') {        collapse = true;        return false;      };    });    if (expand) {      $('div#job_item_expand_all').css('display', 'inline-block');    } else {      $('div#job_item_expand_all').css('display', 'none');    };    if (collapse) {      $('div#job_item_collapse_all').css('display', 'inline-block');    } else {      $('div#job_item_collapse_all').css('display', 'none');    };  };correct_behavior_functional_buttons();</script></body></html>
