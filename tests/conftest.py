@@ -1,18 +1,19 @@
 """Pytest configuration and fixtures."""
 
-import sys
 import os
+import sys
 from pathlib import Path
 
 # Add project root to Python path
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
-import pytest
 import tempfile
 
+import pytest
+
 from openunderstand.oudb import api
-from openunderstand.oudb.models import KindModel, EntityModel
+from openunderstand.oudb.models import KindModel
 
 
 @pytest.fixture
