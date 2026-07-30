@@ -2,8 +2,6 @@
 
 import sys
 
-import pytest
-
 
 def test_python_version():
     """Test that Python version is compatible."""
