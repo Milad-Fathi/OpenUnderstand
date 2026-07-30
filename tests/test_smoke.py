@@ -1,6 +1,7 @@
 ﻿"""Smoke tests for OpenUnderstand."""
 
 import sys
+
 import pytest
 
 
