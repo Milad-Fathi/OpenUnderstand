@@ -41,18 +41,18 @@ jobs:
     - name: Check line coverage threshold
       run: |
         echo "Checking line coverage..."
-        coverage report --fail-under=5
+        coverage report --fail-under=80
 
     - name: Check branch coverage threshold
       run: |
         echo "Checking branch coverage..."
         BRANCH_COVERAGE=$(coverage report | grep TOTAL | awk '{print $6}' | sed 's/%//')
         echo "Branch coverage: ${BRANCH_COVERAGE}%"
-        if [ -n "$BRANCH_COVERAGE" ] && [ "$BRANCH_COVERAGE" -lt 5 ]; then
-          echo "Branch coverage ${BRANCH_COVERAGE}% is below 5%!"
+        if [ -n "$BRANCH_COVERAGE" ] && [ "$BRANCH_COVERAGE" -lt 70 ]; then
+          echo "Branch coverage ${BRANCH_COVERAGE}% is below 70%!"
           exit 1
         else
-          echo "Branch coverage meets 5% threshold!"
+          echo "Branch coverage meets 70% threshold!"
         fi
 
     - name: Upload coverage HTML
