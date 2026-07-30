@@ -165,7 +165,7 @@ False
 --seeding.max_dynamic_pool_size
 50
 --seeding.seed
-1785386189138231600
+1785440520074370400
 --seeding.seed_from_archive
 False
 --seeding.seed_from_archive_mutations
@@ -202,7 +202,7 @@ True
 --stopping.maximum_coverage_plateau
 -1
 --stopping.maximum_iterations
-10
+50
 --stopping.maximum_memory
 3000
 --stopping.maximum_search_time

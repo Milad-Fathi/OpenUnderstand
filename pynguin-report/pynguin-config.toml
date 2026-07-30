@@ -46,7 +46,7 @@ maximum_search_time = -1
 maximum_test_executions = -1
 maximum_statement_executions = -1
 maximum_slicing_time = 600
-maximum_iterations = 10
+maximum_iterations = 50
 maximum_test_execution_timeout = 5
 maximum_coverage = 100
 maximum_coverage_plateau = -1
@@ -76,7 +76,7 @@ fandango_string_weight = 0.4
 fandango_faker_string_weight = 0.0
 
 [seeding]
-seed = 1785386189138231600
+seed = 1785440520074370400
 constant_seeding = true
 initial_population_seeding = false
 initial_population_data = ""
