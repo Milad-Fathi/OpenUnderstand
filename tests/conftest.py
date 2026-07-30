@@ -36,8 +36,11 @@ def temp_db():
     if hasattr(db, 'close'):
         try:
             db.close()
-        except Exception as e:
-            # Log or ignore - cleanup is best effort
+        except AttributeError:
+            # Database doesn't have close method
+            pass
+        except OSError as e:
+            # File system error
             print(f"Warning: Could not close database: {e}")
 
     # Cleanup - try to delete the file

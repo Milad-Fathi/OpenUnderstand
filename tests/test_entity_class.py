@@ -33,7 +33,9 @@ def temp_db():
     if hasattr(db, 'close'):
         try:
             db.close()
-        except Exception as e:
+        except AttributeError:
+            pass
+        except OSError as e:
             print(f"Warning: Could not close database: {e}")
 
     if os.path.exists(db_path):
