@@ -5,10 +5,7 @@ even when foreign keys are not set.
 """
 
 import sys
-import os
 from pathlib import Path
-
-import pytest
 
 # Add project root to Python path
 project_root = Path(__file__).parent.parent
@@ -29,9 +26,6 @@ def test_reference_model_str_without_foreign_keys():
 
 def test_reference_model_str_with_foreign_keys():
     """Test that ReferenceModel.__str__() works with foreign keys."""
-    from openunderstand.oudb.models import KindModel, EntityModel
-    
-    # Create a reference model with foreign keys
     ref = ReferenceModel()
     ref._id = 1
     result = str(ref)
